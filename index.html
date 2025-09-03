@@ -33,19 +33,22 @@
   </video>
 
   <!-- невидимая область для первого тапа -->
+  <div id="overlay"></div>
+
   <script>
-  const video = document.getElementById('bg');
+    const video = document.getElementById('bg');
+    const overlay = document.getElementById('overlay');
 
-  function enableSound() {
-    video.muted = false;
-    video.play();
-    window.removeEventListener('deviceorientation', enableSound);
-    window.removeEventListener('devicemotion', enableSound);
-  }
-
-  // первая тряска/наклон телефона считается "действием"
-  window.addEventListener('deviceorientation', enableSound, { once: true });
-  window.addEventListener('devicemotion', enableSound, { once: true });
+    overlay.addEventListener('click', () => {
+      video.muted = false;
+      video.play();
+      overlay.remove(); // убираем невидимую кнопку
+    });
+    overlay.addEventListener('touchstart', () => {
+      video.muted = false;
+      video.play();
+      overlay.remove();
+    });
   </script>
 </body>
 </html>
