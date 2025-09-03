@@ -39,16 +39,16 @@
     const video = document.getElementById('bg');
     const overlay = document.getElementById('overlay');
 
-    overlay.addEventListener('click', () => {
+    function enableSound() {
       video.muted = false;
-      video.play();
-      overlay.remove(); // убираем невидимую кнопку
-    });
-    overlay.addEventListener('touchstart', () => {
-      video.muted = false;
-      video.play();
+      if (video.paused) {
+        video.play();
+      }
       overlay.remove();
-    });
+    }
+
+    overlay.addEventListener('click', enableSound, { once: true });
+    overlay.addEventListener('touchstart', enableSound, { once: true });
   </script>
 </body>
 </html>
