@@ -31,24 +31,5 @@
   <video id="bg" autoplay muted playsinline loop poster="preview.jpg">
     <source src="rickroll.mp4" type="video/mp4">
   </video>
-
-  <!-- невидимая область для первого тапа -->
-  <div id="overlay"></div>
-
-  <script>
-    const video = document.getElementById('bg');
-    const overlay = document.getElementById('overlay');
-
-    function enableSound() {
-      video.muted = false;
-      if (video.paused) {
-        video.play();
-      }
-      overlay.remove();
-    }
-
-    overlay.addEventListener('click', enableSound, { once: true });
-    overlay.addEventListener('touchstart', enableSound, { once: true });
-  </script>
 </body>
 </html>
