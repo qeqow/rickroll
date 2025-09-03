@@ -20,16 +20,14 @@
   </head>
   <body>
     <video id="rickroll" autoplay muted playsinline>
-      <source src="https://rickroll.it/rickroll.mp4" type="video/mp4">
+      <source src="rickroll.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
 
     <script>
       const vid = document.getElementById("rickroll");
-      // Сразу пробуем включить со звуком
       vid.muted = false;
       vid.play().catch(() => {
-        // Если блокируется — ждём первого тапа
         document.body.addEventListener("click", () => {
           vid.muted = false;
           vid.play();
