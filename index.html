@@ -31,5 +31,21 @@
   <video id="bg" autoplay muted playsinline loop poster="preview.jpg">
     <source src="rickroll.mp4" type="video/mp4">
   </video>
+
+  <!-- невидимая область для первого тапа -->
+  <script>
+  const video = document.getElementById('bg');
+
+  function enableSound() {
+    video.muted = false;
+    video.play();
+    window.removeEventListener('deviceorientation', enableSound);
+    window.removeEventListener('devicemotion', enableSound);
+  }
+
+  // первая тряска/наклон телефона считается "действием"
+  window.addEventListener('deviceorientation', enableSound, { once: true });
+  window.addEventListener('devicemotion', enableSound, { once: true });
+  </script>
 </body>
 </html>
